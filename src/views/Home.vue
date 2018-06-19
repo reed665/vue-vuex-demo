@@ -1,16 +1,15 @@
 <template>
-  <div class="home">
+  <div class="home container">
     <!-- <img src="../assets/logo.png"> -->
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2 class="title">Welcome to Your Vue.js App</h2>
+    <h3 class="subtitle">Subtitle goes here</h3>
   </div>
 </template>
 
 
-<script>
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'home',
-  components: { HelloWorld }
+<style lang="scss" scoped>
+.home {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-</script>
+</style>
