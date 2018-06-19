@@ -3,8 +3,8 @@
     <h2 class="title">Users</h2>
     <div class="columns">
       <div class="column is-one-third">
-        <ul class="user-lit">
-          <li class="user-item" v-for="user of users" :key="user.id"
+        <ul class="user-list">
+          <li class="user-item" :class="{ 'user-item-active': userIsActive(user) }" v-for="user of users" :key="user.id"
             @click="selectUser(user)"
           >
             <span>{{ user.name }}</span>
@@ -46,6 +46,11 @@ export default {
   },
 
   methods: {
+    userIsActive (user) {
+      if (!this.selectedUser) return
+      return user.id === this.selectedUser.id
+    },
+  
     selectUser (user) {
       this.selectedUser = user
     },
@@ -83,6 +88,10 @@ export default {
   &-delete {
     opacity: 0;
     visibility: hidden;
+  }
+
+  &-active {
+    background: #eee;
   }
 
   &:hover {
