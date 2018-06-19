@@ -4,9 +4,12 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "server": "json-server db.json --port 3004",
+    "db:restore": "cp db.backup.json db.json",
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "axios": "^0.18.0",
     "bulma": "^0.7.1",
     "vue": "^2.5.16",

@@ -7,7 +7,11 @@
           <li class="user-item" v-for="user of users" :key="user.id"
             @click="selectUser(user)"
           >
-            {{ user.name }}
+            <span>{{ user.name }}</span>
+
+            <span class="user-item-delete icon" @click.stop="deleteUser(user)">
+              <i class="fas fa-trash"></i>
+            </span>
           </li>
         </ul>
       </div>
@@ -45,6 +49,15 @@ export default {
     selectUser (user) {
       this.selectedUser = user
     },
+
+    deleteUser (user) {
+      this.$store.dispatch('users/remove', user)
+        .then(() => {
+          if (this.selectedUser && this.selectedUser.id === user.id) {
+            this.selectedUser = null
+          }
+        })
+    },
   },
 
   created () {
@@ -60,14 +73,24 @@ export default {
   margin-bottom: 30px;
 }
 
-.user {
-  &-item {
-    padding: 5px;
-    cursor: pointer;
-    transition: background-color .3s ease;
+.user-item {
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color .3s ease;
+  display: flex;
+  justify-content: space-between;
 
-    &:hover {
-      background: #eee;
+  &-delete {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &:hover {
+    background: #eee;
+
+    .user-item-delete {
+      opacity: 1;
+      visibility: visible;
     }
   }
 }

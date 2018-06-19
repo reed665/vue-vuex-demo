@@ -3,8 +3,8 @@ export default {
     state.data = users
   },
 
-  remove (state, id) {
-    state.data = state.data.filter(item => item.id !== id)
+  remove (state, user) {
+    state.data = state.data.filter(item => item.id !== user.id)
   },
 
   add (state, user) {
